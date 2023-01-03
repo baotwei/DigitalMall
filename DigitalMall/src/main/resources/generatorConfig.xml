@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="my" targetRuntime="MyBatis3Simple">
+        <!-- 配置        -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/digitalmall?serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="1234">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 指定JavaBean的生成策略        -->
+        <javaModelGenerator targetPackage="cn.edu.hzvtc.pojo" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 指定sql映射文件生成策略        -->
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--指定mapper接口位置        -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.edu.hzvtc.dao" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--指定逆向解析数据表        -->
+        <table tableName="users" domainObjectName="User"></table>
+        <table tableName="orders" domainObjectName="Order"></table>
+        <table tableName="goods" domainObjectName="Good"></table>
+        <table tableName="comments" domainObjectName="Comment"></table>
+        <table tableName="announcements" domainObjectName="Announcement"></table>
+    </context>
+</generatorConfiguration>
